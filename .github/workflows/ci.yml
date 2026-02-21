@@ -17,22 +17,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
+          cache: "npm"
 
       - name: Install
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Build (tsc)
         run: npm run build --if-present
 
-      # Pin eslint@8 + typescript-eslint@6 so the classic .eslintrc works reliably
       - name: Lint (TypeScript)
-        run: >
-          npx -y
-          -p eslint@8
-          -p @typescript-eslint/parser@6
-          -p @typescript-eslint/eslint-plugin@6
-          eslint -c .eslintrc.cjs "src/**/*.ts"
+        run: |
+          npx -y -p eslint@8 -p @typescript-eslint/parser@6 -p @typescript-eslint/eslint-plugin@6 \
+            eslint -c .eslintrc.cjs "src/**/*.ts"
 
       - name: Test
         run: npm test --if-present
