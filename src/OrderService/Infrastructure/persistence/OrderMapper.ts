@@ -1,11 +1,5 @@
 import { Order } from '../../Domain/aggregates/Order.aggregate';
-import { OrderId } from '../../Domain/value-objects/OrderId';
-import { CustomerId } from '../../Domain/value-objects/CustomerId';
-import { ProductId } from '../../Domain/value-objects/ProductId';
-import { Money } from '../../Domain/value-objects/Money';
-import { Quantity } from '../../Domain/value-objects/Quantity';
 import { OrderStatus } from '../../Domain/enums/OrderStatus';
-import { OrderItem } from '../../Domain/entities/OrderItem';
 
 export interface OrderRow {
   id: string;

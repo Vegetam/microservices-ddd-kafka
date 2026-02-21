@@ -141,7 +141,7 @@ export class KafkaService implements OnApplicationBootstrap, OnApplicationShutdo
         }
 
         // Optional schema validation by topic
-        const schema = (TopicSchemas as Record<string, any>)[topic];
+        const schema = (TopicSchemas as Record<string, { parse: (v: unknown) => unknown }>)[topic];
         if (schema) {
           try {
             schema.parse(parsed);

@@ -7,7 +7,7 @@ import { OrderId } from '../../Domain/value-objects/OrderId';
 import { CustomerId } from '../../Domain/value-objects/CustomerId';
 import { OrderStatus } from '../../Domain/enums/OrderStatus';
 import { OrderMapper } from './OrderMapper';
-import { DomainEvent } from '../../../../shared/kernel/DomainEvent';
+import type { DomainEvent } from '../../../../shared/kernel/DomainEvent';
 
 @Injectable()
 export class OrderRepository implements IOrderRepository {
@@ -16,7 +16,7 @@ export class OrderRepository implements IOrderRepository {
   /** Persist Order + domain events in ONE transaction — outbox guarantee */
   async saveWithOutbox(order: Order): Promise<void> {
     const raw = OrderMapper.toPersistence(order);
-    const events = order.getDomainEvents();
+    const events: DomainEvent[] = order.getDomainEvents();
 
     await this.dataSource.transaction(async (manager) => {
       await manager.query(
