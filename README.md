@@ -1,6 +1,10 @@
 # 🏛️ Microservices: Clean Architecture · DDD · SAGA · Outbox · Kafka
 
+[![CI](https://github.com/Vegetam/microservices-ddd-kafka/actions/workflows/ci.yml/badge.svg)](https://github.com/Vegetam/microservices-ddd-kafka/actions/workflows/ci.yml)
+![License](https://img.shields.io/github/license/Vegetam/microservices-ddd-kafka)
+
 > Enterprise-grade microservices implementing Domain-Driven Design, CQRS, the Transactional Outbox Pattern, and Kafka-based saga choreography — built as a learning PoC.
+
 
 ## ✅ Run locally (Docker Compose)
 
