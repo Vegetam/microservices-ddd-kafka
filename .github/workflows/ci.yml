@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      - name: Build (tsc)
+        run: npm run build --if-present
+
+      # Pin eslint@8 + typescript-eslint@6 so the classic .eslintrc works reliably
+      - name: Lint (TypeScript)
+        run: >
+          npx -y
+          -p eslint@8
+          -p @typescript-eslint/parser@6
+          -p @typescript-eslint/eslint-plugin@6
+          eslint -c .eslintrc.cjs "src/**/*.ts"
+
+      - name: Test
+        run: npm test --if-present
