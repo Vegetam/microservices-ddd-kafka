@@ -26,9 +26,7 @@ jobs:
         run: npm run build --if-present
 
       - name: Lint (TypeScript)
-        run: |
-          npx -y -p eslint@8 -p @typescript-eslint/parser@6 -p @typescript-eslint/eslint-plugin@6 \
-            eslint -c .eslintrc.cjs "src/**/*.ts"
+        run: npm run lint --if-present
 
       - name: Test
         run: npm test --if-present
