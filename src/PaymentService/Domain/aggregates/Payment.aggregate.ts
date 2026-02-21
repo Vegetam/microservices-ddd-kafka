@@ -5,7 +5,7 @@ import { Money } from '../value-objects/Money';
 import { PaymentStatus } from '../enums/PaymentStatus';
 import {
   PaymentProcessedEvent, PaymentFailedEvent,
-  PaymentRefundedEvent, PaymentCapturedEvent,
+  PaymentRefundedEvent,
 } from '../events/PaymentEvents';
 
 export class Payment extends AggregateRoot<PaymentId> {

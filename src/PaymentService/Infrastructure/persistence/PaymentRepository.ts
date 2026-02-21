@@ -4,9 +4,20 @@ import { DataSource } from 'typeorm';
 import { IPaymentRepository } from '../../Domain/repositories/IPaymentRepository';
 import { Payment } from '../../Domain/aggregates/Payment.aggregate';
 import { PaymentId, OrderId } from '../../Domain/value-objects/PaymentId';
-import { Money } from '../../Domain/value-objects/Money';
 import { PaymentStatus } from '../../Domain/enums/PaymentStatus';
-import { StripeChargeId } from '../../Domain/value-objects/PaymentId';
+
+
+type PaymentRow = {
+  id: string;
+  order_id: string;
+  customer_id: string;
+  status: string;
+  amount: string | number;
+  currency: string;
+  stripe_charge_id: string | null;
+  created_at: string | Date;
+  updated_at: string | Date;
+};
 
 @Injectable()
 export class PaymentRepository implements IPaymentRepository {
@@ -28,7 +39,7 @@ export class PaymentRepository implements IPaymentRepository {
         await m.query(
           `INSERT INTO outbox_events (aggregate_id, aggregate_type, event_type, payload, occurred_at)
            VALUES ($1,'Payment',$2,$3,$4)`,
-          [payment.id.value, e.eventType, JSON.stringify((e as any).payload ?? e), new Date()],
+          [payment.id.value, e.eventType, JSON.stringify(((e as unknown as { payload?: unknown }).payload) ?? e), new Date()],
         );
       }
     });
@@ -45,13 +56,13 @@ export class PaymentRepository implements IPaymentRepository {
     return rows.length === 0 ? null : this.toDomain(rows[0]);
   }
 
-  private toDomain(row: any): Payment {
+  private toDomain(row: PaymentRow): Payment {
     return Payment.reconstitute({
       id: row.id, orderId: row.order_id, customerId: row.customer_id,
       status: row.status as PaymentStatus,
-      amount: { amount: parseFloat(row.amount), currency: row.currency },
+      amount: { amount: typeof row.amount === 'number' ? row.amount : parseFloat(row.amount), currency: row.currency },
       stripeChargeId: row.stripe_charge_id ?? null,
-      createdAt: new Date(row.created_at), updatedAt: new Date(row.updated_at),
+      createdAt: row.created_at instanceof Date ? row.created_at : new Date(row.created_at), updatedAt: row.updated_at instanceof Date ? row.updated_at : new Date(row.updated_at),
     });
   }
 }
