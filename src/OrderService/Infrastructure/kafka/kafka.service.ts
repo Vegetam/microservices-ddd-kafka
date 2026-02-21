@@ -4,6 +4,8 @@ import { TopicSchemas } from '../../../../shared/events/topicSchemas';
 
 type JsonRecord = Record<string, unknown>;
 
+type Schema = { parse: (input: unknown) => unknown };
+
 function sleep(ms: number): Promise<void> {
   return new Promise((res) => setTimeout(res, ms));
 }
@@ -141,7 +143,7 @@ export class KafkaService implements OnApplicationBootstrap, OnApplicationShutdo
         }
 
         // Optional schema validation by topic
-        const schema = (TopicSchemas as Record<string, { parse: (v: unknown) => unknown }>)[topic];
+        const schema = (TopicSchemas as Record<string, Schema | undefined>)[topic];
         if (schema) {
           try {
             schema.parse(parsed);

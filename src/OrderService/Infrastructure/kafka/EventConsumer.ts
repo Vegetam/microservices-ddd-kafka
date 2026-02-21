@@ -1,24 +1,44 @@
 import { Injectable, Logger, OnApplicationBootstrap } from '@nestjs/common';
-import { KafkaService } from '../../../OrderService/Infrastructure/kafka/kafka.service';
-import { OrderConfirmedHandler } from '../../Application/event-handlers/OrderConfirmedHandler';
-import { OrderCancelledHandler } from '../../Application/event-handlers/OrderCancelledHandler';
+import { KafkaService } from './kafka.service';
+import { PaymentProcessedHandler } from '../../Application/event-handlers/PaymentProcessedHandler';
 
-type OrderConfirmedPayload = { orderId: string; customerId: string; total: { amount: number; currency: string } };
-type OrderCancelledPayload = { orderId: string; customerId: string; reason: string };
-
+/**
+ * EventConsumer subscribes to Kafka topics and routes messages
+ * to the appropriate Application layer event handlers.
+ */
 @Injectable()
 export class EventConsumer implements OnApplicationBootstrap {
   private readonly logger = new Logger(EventConsumer.name);
+
   constructor(
-    private readonly kafka: KafkaService,
-    private readonly confirmedHandler: OrderConfirmedHandler,
-    private readonly cancelledHandler: OrderCancelledHandler,
+    private readonly kafkaService: KafkaService,
+    private readonly paymentProcessedHandler: PaymentProcessedHandler,
   ) {}
+
   async onApplicationBootstrap(): Promise<void> {
-    await this.kafka.subscribe('order.confirmed', 'notif-order-confirmed',
-      async (p) => this.confirmedHandler.handle(p as OrderConfirmedPayload));
-    await this.kafka.subscribe('order.cancelled', 'notif-order-cancelled',
-      async (p) => this.cancelledHandler.handle(p as OrderCancelledPayload));
-    this.logger.log('NotificationService consumers started');
+    await this.subscribeToPaymentEvents();
+    this.logger.log('OrderService Kafka consumers started');
+  }
+
+  private async subscribeToPaymentEvents(): Promise<void> {
+    await this.kafkaService.subscribe(
+      'payment.processed',
+      'order-service-payment-processed',
+      async (payload) => {
+        this.logger.log(`Received payment.processed for order ${payload.orderId as string}`);
+        await this.paymentProcessedHandler.handle(payload as { orderId: string; paymentId: string });
+      },
+    );
+
+    await this.kafkaService.subscribe(
+      'payment.failed',
+      'order-service-payment-failed',
+      async (payload) => {
+        this.logger.warn(`Received payment.failed for order ${payload.orderId as string}`);
+        await this.paymentProcessedHandler.handleFailed(
+          payload as { orderId: string; reason: string },
+        );
+      },
+    );
   }
 }
