@@ -1,0 +1,13 @@
+fullnameOverride: redis
+
+auth:
+  enabled: true
+  password: CHANGE_ME
+
+replica:
+  replicaCount: 1
+
+master:
+  persistence:
+    enabled: true
+    size: 2Gi

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: platform-config
+  namespace: ms-ddd-kafka
+data:
+  PORT: "3000"
+  KAFKA_BROKERS: "kafka:9092"
+  OUTBOX_POLL_INTERVAL_MS: "500"
+  OUTBOX_BATCH_SIZE: "100"
+  OUTBOX_MAX_RETRIES: "5"
+  OUTBOX_STALE_LOCK_SECONDS: "60"
+  REDIS_HOST: "redis-master"
+  REDIS_PORT: "6379"

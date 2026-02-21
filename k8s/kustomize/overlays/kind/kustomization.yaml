@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ms-ddd-kafka
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: orders-postgresql-init-scripts
+    files:
+      - 001_initial.sql=../../../../src/OrderService/Infrastructure/persistence/migrations/001_initial.sql
+      - 002_outbox_hardening.sql=../../../../src/OrderService/Infrastructure/persistence/migrations/002_outbox_hardening.sql
+  - name: payments-postgresql-init-scripts
+    files:
+      - 001_initial.sql=../../../../src/PaymentService/Infrastructure/persistence/migrations/001_initial.sql
+      - 002_outbox_hardening.sql=../../../../src/PaymentService/Infrastructure/persistence/migrations/002_outbox_hardening.sql
+
+resources:
+  - ../../base
+  - secrets.yaml
+  - extra/ingress.yaml
+
+images:
+  - name: microservices-ddd-kafka/order-service
+    newTag: kind
+  - name: microservices-ddd-kafka/payment-service
+    newTag: kind
+  - name: microservices-ddd-kafka/notification-service
+    newTag: kind
+
+# Requires: kustomize build --enable-helm
+helmCharts:
+  - name: kafka
+    repo: https://charts.bitnami.com/bitnami
+    version: 32.4.10
+    releaseName: kafka
+    namespace: ms-ddd-kafka
+    valuesFile: values/kafka.yaml
+  - name: redis
+    repo: https://charts.bitnami.com/bitnami
+    version: 23.0.5
+    releaseName: redis
+    namespace: ms-ddd-kafka
+    valuesFile: values/redis.yaml
+  - name: postgresql
+    repo: https://charts.bitnami.com/bitnami
+    version: 17.0.2
+    releaseName: orders-db
+    namespace: ms-ddd-kafka
+    valuesFile: values/orders-postgresql.yaml
+  - name: postgresql
+    repo: https://charts.bitnami.com/bitnami
+    version: 17.0.2
+    releaseName: payments-db
+    namespace: ms-ddd-kafka
+    valuesFile: values/payments-postgresql.yaml

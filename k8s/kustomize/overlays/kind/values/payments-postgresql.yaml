@@ -1,0 +1,12 @@
+fullnameOverride: payments-postgresql
+
+auth:
+  username: payments_user
+  password: payments_pass
+  database: payments_db
+
+primary:
+  initdb:
+    scriptsConfigMap: payments-postgresql-init-scripts
+  persistence:
+    enabled: false

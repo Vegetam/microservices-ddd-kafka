@@ -1,0 +1,20 @@
+fullnameOverride: orders-postgresql
+
+auth:
+  username: orders_user
+  password: CHANGE_ME
+  database: orders_db
+
+primary:
+  initdb:
+    scriptsConfigMap: orders-postgresql-init-scripts
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 2Gi

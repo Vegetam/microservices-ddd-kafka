@@ -1,0 +1,20 @@
+fullnameOverride: payments-postgresql
+
+auth:
+  username: payments_user
+  password: CHANGE_ME
+  database: payments_db
+
+primary:
+  initdb:
+    scriptsConfigMap: payments-postgresql-init-scripts
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 2Gi

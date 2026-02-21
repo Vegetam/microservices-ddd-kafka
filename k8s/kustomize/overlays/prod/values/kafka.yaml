@@ -1,0 +1,27 @@
+fullnameOverride: kafka
+
+controller:
+  replicaCount: 3
+broker:
+  replicaCount: 3
+
+listeners:
+  client:
+    protocol: PLAINTEXT
+  interbroker:
+    protocol: PLAINTEXT
+  controller:
+    protocol: PLAINTEXT
+
+# In real prod: enable TLS/SASL & ACLs.
+sasl:
+  enabledMechanisms: ""
+  interBrokerMechanism: ""
+  controllerMechanism: ""
+
+tls:
+  enabled: false
+
+persistence:
+  enabled: true
+  size: 20Gi

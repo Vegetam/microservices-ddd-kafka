@@ -1,0 +1,12 @@
+fullnameOverride: orders-postgresql
+
+auth:
+  username: orders_user
+  password: orders_pass
+  database: orders_db
+
+primary:
+  initdb:
+    scriptsConfigMap: orders-postgresql-init-scripts
+  persistence:
+    enabled: false

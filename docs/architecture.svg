@@ -1,0 +1,445 @@
+<svg viewBox="0 0 1500 980" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060d1a"/>
+      <stop offset="100%" style="stop-color:#0a1220"/>
+    </linearGradient>
+    <linearGradient id="headerOrder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#0f2035"/>
+    </linearGradient>
+    <linearGradient id="headerPayment" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#14532d"/>
+      <stop offset="100%" style="stop-color:#052e16"/>
+    </linearGradient>
+    <linearGradient id="headerNotif" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#581c87"/>
+      <stop offset="100%" style="stop-color:#3b0764"/>
+    </linearGradient>
+    <linearGradient id="kafkaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a30"/>
+      <stop offset="100%" style="stop-color:#0d0620"/>
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowStrong" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="ab" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#3b82f6"/>
+    </marker>
+    <marker id="ag" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#22c55e"/>
+    </marker>
+    <marker id="ap" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#a855f7"/>
+    </marker>
+    <marker id="ao" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#f97316"/>
+    </marker>
+    <marker id="ar" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#ef4444"/>
+    </marker>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#0d1f35" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- BG -->
+  <rect width="1500" height="980" fill="url(#bg)"/>
+  <rect width="1500" height="980" fill="url(#grid)"/>
+  <ellipse cx="300" cy="300" rx="300" ry="200" fill="#3b82f6" opacity="0.02"/>
+  <ellipse cx="1200" cy="600" rx="300" ry="250" fill="#8b5cf6" opacity="0.03"/>
+
+  <!-- TITLE -->
+  <text x="750" y="38" text-anchor="middle" fill="#e2e8f0" font-size="20" font-weight="bold" letter-spacing="5">MICROSERVICES ARCHITECTURE</text>
+  <text x="750" y="58" text-anchor="middle" fill="#334155" font-size="10" letter-spacing="8">CLEAN ARCHITECTURE  ·  DDD  ·  CQRS  ·  OUTBOX  ·  KAFKA</text>
+  <line x1="60" y1="68" x2="1440" y2="68" stroke="#1e3a5f" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- CLIENT + GATEWAY ROW -->
+  <!-- ══════════════════════════════════════════════ -->
+  <rect x="600" y="78" width="300" height="44" rx="5" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="750" y="96" text-anchor="middle" fill="#94a3b8" font-size="9" letter-spacing="2">CLIENT LAYER</text>
+  <text x="750" y="112" text-anchor="middle" fill="#475569" font-size="8">Web App  ·  Mobile  ·  Third-Party</text>
+
+  <line x1="750" y1="122" x2="750" y2="136" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ab)"/>
+
+  <rect x="350" y="138" width="800" height="44" rx="5" fill="#0f1f3a" stroke="#3b82f6" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="750" y="158" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold" letter-spacing="3">API GATEWAY  (Kong)</text>
+  <text x="750" y="172" text-anchor="middle" fill="#334155" font-size="8" letter-spacing="2">JWT Auth  ·  Rate Limiting  ·  TLS  ·  Routing  ·  OpenAPI Docs</text>
+
+  <!-- Gateway → 3 services -->
+  <line x1="500" y1="182" x2="250" y2="242" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ab)"/>
+  <line x1="750" y1="182" x2="750" y2="242" stroke="#22c55e" stroke-width="1.5" marker-end="url(#ag)"/>
+  <line x1="1000" y1="182" x2="1250" y2="242" stroke="#a855f7" stroke-width="1.5" marker-end="url(#ap)"/>
+
+  <text x="330" y="218" fill="#3b82f6" font-size="8">:3010</text>
+  <text x="756" y="218" fill="#22c55e" font-size="8">:3011</text>
+  <text x="1090" y="218" fill="#a855f7" font-size="8">:3012</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- CLEAN ARCHITECTURE LAYER LABEL -->
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- Left label for layers -->
+  <text x="42" y="330" fill="#1e3a5f" font-size="8" letter-spacing="1" transform="rotate(-90,42,330)">API LAYER</text>
+  <text x="42" y="430" fill="#1e3a5f" font-size="8" letter-spacing="1" transform="rotate(-90,42,430)">APPLICATION</text>
+  <text x="42" y="530" fill="#1e3a5f" font-size="8" letter-spacing="1" transform="rotate(-90,42,530)">DOMAIN (PURE)</text>
+  <text x="42" y="635" fill="#1e3a5f" font-size="8" letter-spacing="1" transform="rotate(-90,42,635)">INFRASTRUCTURE</text>
+
+  <!-- Layer divider lines -->
+  <line x1="58" y1="370" x2="1442" y2="370" stroke="#0d1f35" stroke-width="1" stroke-dasharray="6,4"/>
+  <line x1="58" y1="470" x2="1442" y2="470" stroke="#0d1f35" stroke-width="1" stroke-dasharray="6,4"/>
+  <line x1="58" y1="580" x2="1442" y2="580" stroke="#0d1f35" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- ORDER SERVICE -->
+  <!-- ══════════════════════════════════════════════ -->
+  <rect x="62" y="242" width="374" height="430" rx="8" fill="#060f1c" stroke="#3b82f6" stroke-width="2"/>
+  <!-- Header -->
+  <rect x="62" y="242" width="374" height="32" rx="8" fill="url(#headerOrder)"/>
+  <rect x="62" y="260" width="374" height="14" fill="url(#headerOrder)"/>
+  <text x="249" y="263" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold" letter-spacing="3">ORDER SERVICE</text>
+
+  <!-- API Layer -->
+  <rect x="78" y="280" width="342" height="82" rx="5" fill="#071525" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="249" y="296" text-anchor="middle" fill="#3b82f6" font-size="8" letter-spacing="2">API LAYER</text>
+  <rect x="88" y="301" width="150" height="50" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="163" y="316" text-anchor="middle" fill="#64748b" font-size="8" font-weight="bold">OrderController</text>
+  <text x="163" y="329" text-anchor="middle" fill="#334155" font-size="7">POST /orders</text>
+  <text x="163" y="340" text-anchor="middle" fill="#334155" font-size="7">GET  /orders/:id</text>
+  <text x="163" y="351" text-anchor="middle" fill="#334155" font-size="7">DELETE /orders/:id</text>
+  <rect x="248" y="301" width="162" height="50" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="329" y="316" text-anchor="middle" fill="#64748b" font-size="8" font-weight="bold">DTOs + Validators</text>
+  <text x="329" y="329" text-anchor="middle" fill="#334155" font-size="7">CreateOrderDto</text>
+  <text x="329" y="340" text-anchor="middle" fill="#334155" font-size="7">OrderResponseDto</text>
+  <text x="329" y="351" text-anchor="middle" fill="#334155" font-size="7">class-validator</text>
+
+  <!-- Application Layer -->
+  <rect x="78" y="372" width="342" height="90" rx="5" fill="#071525" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="249" y="388" text-anchor="middle" fill="#3b82f6" font-size="8" letter-spacing="2">APPLICATION LAYER  (CQRS)</text>
+  <rect x="88" y="393" width="100" height="60" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="138" y="407" text-anchor="middle" fill="#64748b" font-size="7" font-weight="bold">COMMANDS</text>
+  <text x="138" y="419" text-anchor="middle" fill="#334155" font-size="7">PlaceOrderCmd</text>
+  <text x="138" y="430" text-anchor="middle" fill="#334155" font-size="7">CancelOrderCmd</text>
+  <text x="138" y="441" text-anchor="middle" fill="#334155" font-size="7">ConfirmOrderCmd</text>
+  <text x="138" y="452" text-anchor="middle" fill="#334155" font-size="7">DeliverOrderCmd</text>
+  <rect x="198" y="393" width="100" height="60" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="248" y="407" text-anchor="middle" fill="#64748b" font-size="7" font-weight="bold">QUERIES</text>
+  <text x="248" y="419" text-anchor="middle" fill="#334155" font-size="7">GetOrderById</text>
+  <text x="248" y="430" text-anchor="middle" fill="#334155" font-size="7">GetByCustomer</text>
+  <text x="248" y="441" text-anchor="middle" fill="#334155" font-size="7">ListOrders</text>
+  <text x="248" y="452" text-anchor="middle" fill="#334155" font-size="7">OrderReadModel</text>
+  <rect x="308" y="393" width="102" height="60" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="359" y="407" text-anchor="middle" fill="#64748b" font-size="7" font-weight="bold">EVT HANDLERS</text>
+  <text x="359" y="419" text-anchor="middle" fill="#334155" font-size="7">PaymentProcessed</text>
+  <text x="359" y="430" text-anchor="middle" fill="#334155" font-size="7">InventoryReserved</text>
+  <text x="359" y="441" text-anchor="middle" fill="#334155" font-size="7">→ confirm order</text>
+  <text x="359" y="452" text-anchor="middle" fill="#334155" font-size="7">→ update read</text>
+
+  <!-- Domain Layer -->
+  <rect x="78" y="472" width="342" height="100" rx="5" fill="#03080f" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="249" y="488" text-anchor="middle" fill="#60a5fa" font-size="8" letter-spacing="2">DOMAIN LAYER  ⚡ PURE — NO FRAMEWORK</text>
+  <rect x="88" y="493" width="155" height="68" rx="3" fill="#020710" stroke="#1d3461" stroke-width="1"/>
+  <text x="165" y="507" text-anchor="middle" fill="#3b82f6" font-size="8" font-weight="bold">Order Aggregate</text>
+  <text x="165" y="519" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderId  (UUID VO)</text>
+  <text x="165" y="530" text-anchor="middle" fill="#1e3a5f" font-size="7">CustomerId  (VO)</text>
+  <text x="165" y="541" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderStatus  (enum)</text>
+  <text x="165" y="552" text-anchor="middle" fill="#1e3a5f" font-size="7">Money  (amount+currency)</text>
+  <text x="165" y="563" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderItems[]</text>
+  <rect x="253" y="493" width="157" height="68" rx="3" fill="#020710" stroke="#1d3461" stroke-width="1"/>
+  <text x="331" y="507" text-anchor="middle" fill="#3b82f6" font-size="8" font-weight="bold">Domain Events</text>
+  <text x="331" y="519" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderCreated</text>
+  <text x="331" y="530" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderConfirmed</text>
+  <text x="331" y="541" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderCancelled</text>
+  <text x="331" y="552" text-anchor="middle" fill="#1e3a5f" font-size="7">OrderDelivered</text>
+  <text x="331" y="563" text-anchor="middle" fill="#ef4444" font-size="7">→ via Outbox</text>
+
+  <!-- Infrastructure Layer -->
+  <rect x="78" y="582" width="342" height="80" rx="5" fill="#071525" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="249" y="597" text-anchor="middle" fill="#3b82f6" font-size="8" letter-spacing="2">INFRASTRUCTURE LAYER</text>
+  <rect x="88" y="602" width="100" height="50" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="138" y="616" text-anchor="middle" fill="#64748b" font-size="7" font-weight="bold">OrderRepository</text>
+  <text x="138" y="627" text-anchor="middle" fill="#334155" font-size="7">TypeORM impl</text>
+  <text x="138" y="638" text-anchor="middle" fill="#334155" font-size="7">saveWithOutbox()</text>
+  <text x="138" y="649" text-anchor="middle" fill="#334155" font-size="7">findById()</text>
+  <rect x="198" y="602" width="100" height="50" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="248" y="616" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="bold">OutboxWorker</text>
+  <text x="248" y="627" text-anchor="middle" fill="#334155" font-size="7">Poll 500ms</text>
+  <text x="248" y="638" text-anchor="middle" fill="#334155" font-size="7">FOR UPDATE</text>
+  <text x="248" y="649" text-anchor="middle" fill="#334155" font-size="7">SKIP LOCKED</text>
+  <rect x="308" y="602" width="102" height="50" rx="3" fill="#040e1c" stroke="#1e2d40" stroke-width="1"/>
+  <text x="359" y="616" text-anchor="middle" fill="#64748b" font-size="7" font-weight="bold">Cache Service</text>
+  <text x="359" y="627" text-anchor="middle" fill="#334155" font-size="7">Redis read model</text>
+  <text x="359" y="638" text-anchor="middle" fill="#334155" font-size="7">TTL: 300s</text>
+  <text x="359" y="649" text-anchor="middle" fill="#334155" font-size="7">invalidate on write</text>
+
+  <!-- DB badges -->
+  <rect x="88" y="670" width="155" height="18" rx="3" fill="#0a1628" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="165" y="683" text-anchor="middle" fill="#334155" font-size="8">🗄 PostgreSQL  (orders_db)</text>
+  <rect x="253" y="670" width="157" height="18" rx="3" fill="#0a1628" stroke="#ef4444" stroke-width="1"/>
+  <text x="331" y="683" text-anchor="middle" fill="#7f1d1d" font-size="8">📤 outbox_events table</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAYMENT SERVICE -->
+  <!-- ══════════════════════════════════════════════ -->
+  <rect x="563" y="242" width="374" height="430" rx="8" fill="#040f08" stroke="#22c55e" stroke-width="2"/>
+  <rect x="563" y="242" width="374" height="32" rx="8" fill="url(#headerPayment)"/>
+  <rect x="563" y="260" width="374" height="14" fill="url(#headerPayment)"/>
+  <text x="750" y="263" text-anchor="middle" fill="#86efac" font-size="11" font-weight="bold" letter-spacing="3">PAYMENT SERVICE</text>
+
+  <!-- API -->
+  <rect x="579" y="280" width="342" height="82" rx="5" fill="#040f08" stroke="#14532d" stroke-width="1"/>
+  <text x="750" y="296" text-anchor="middle" fill="#22c55e" font-size="8" letter-spacing="2">API LAYER</text>
+  <rect x="589" y="301" width="150" height="50" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="664" y="316" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">PaymentController</text>
+  <text x="664" y="329" text-anchor="middle" fill="#14532d" font-size="7">POST /payments</text>
+  <text x="664" y="340" text-anchor="middle" fill="#14532d" font-size="7">POST /payments/refund</text>
+  <text x="664" y="351" text-anchor="middle" fill="#14532d" font-size="7">GET  /payments/:id</text>
+  <rect x="749" y="301" width="162" height="50" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="830" y="316" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">DTOs + Validators</text>
+  <text x="830" y="329" text-anchor="middle" fill="#14532d" font-size="7">ProcessPaymentDto</text>
+  <text x="830" y="340" text-anchor="middle" fill="#14532d" font-size="7">RefundDto</text>
+  <text x="830" y="351" text-anchor="middle" fill="#14532d" font-size="7">PaymentResponseDto</text>
+
+  <!-- Application -->
+  <rect x="579" y="372" width="342" height="90" rx="5" fill="#040f08" stroke="#14532d" stroke-width="1"/>
+  <text x="750" y="388" text-anchor="middle" fill="#22c55e" font-size="8" letter-spacing="2">APPLICATION LAYER  (CQRS)</text>
+  <rect x="589" y="393" width="100" height="60" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="639" y="407" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">COMMANDS</text>
+  <text x="639" y="419" text-anchor="middle" fill="#14532d" font-size="7">ProcessPaymentCmd</text>
+  <text x="639" y="430" text-anchor="middle" fill="#14532d" font-size="7">RefundPaymentCmd</text>
+  <text x="639" y="441" text-anchor="middle" fill="#14532d" font-size="7">CapturePaymentCmd</text>
+  <text x="639" y="452" text-anchor="middle" fill="#14532d" font-size="7">VoidPaymentCmd</text>
+  <rect x="699" y="393" width="100" height="60" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="749" y="407" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">QUERIES</text>
+  <text x="749" y="419" text-anchor="middle" fill="#14532d" font-size="7">GetPaymentById</text>
+  <text x="749" y="430" text-anchor="middle" fill="#14532d" font-size="7">GetByOrder</text>
+  <text x="749" y="441" text-anchor="middle" fill="#14532d" font-size="7">LedgerSummary</text>
+  <text x="749" y="452" text-anchor="middle" fill="#14532d" font-size="7">PaymentHistory</text>
+  <rect x="809" y="393" width="102" height="60" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="860" y="407" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">EVT HANDLERS</text>
+  <text x="860" y="419" text-anchor="middle" fill="#14532d" font-size="7">OrderCreated</text>
+  <text x="860" y="430" text-anchor="middle" fill="#14532d" font-size="7">→ init payment</text>
+  <text x="860" y="441" text-anchor="middle" fill="#14532d" font-size="7">OrderCancelled</text>
+  <text x="860" y="452" text-anchor="middle" fill="#14532d" font-size="7">→ auto refund</text>
+
+  <!-- Domain -->
+  <rect x="579" y="472" width="342" height="100" rx="5" fill="#020a04" stroke="#14532d" stroke-width="1.5"/>
+  <text x="750" y="488" text-anchor="middle" fill="#22c55e" font-size="8" letter-spacing="2">DOMAIN LAYER  ⚡ PURE — NO FRAMEWORK</text>
+  <rect x="589" y="493" width="155" height="68" rx="3" fill="#01060200" stroke="#0f3a20" stroke-width="1"/>
+  <text x="666" y="507" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="bold">Payment Aggregate</text>
+  <text x="666" y="519" text-anchor="middle" fill="#14532d" font-size="7">PaymentId  (UUID VO)</text>
+  <text x="666" y="530" text-anchor="middle" fill="#14532d" font-size="7">OrderId  (VO)</text>
+  <text x="666" y="541" text-anchor="middle" fill="#14532d" font-size="7">PaymentStatus (enum)</text>
+  <text x="666" y="552" text-anchor="middle" fill="#14532d" font-size="7">Money  (amount+currency)</text>
+  <text x="666" y="563" text-anchor="middle" fill="#14532d" font-size="7">StripeChargeId  (VO)</text>
+  <rect x="754" y="493" width="157" height="68" rx="3" fill="#010602" stroke="#0f3a20" stroke-width="1"/>
+  <text x="832" y="507" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="bold">Domain Events</text>
+  <text x="832" y="519" text-anchor="middle" fill="#14532d" font-size="7">PaymentProcessed</text>
+  <text x="832" y="530" text-anchor="middle" fill="#14532d" font-size="7">PaymentFailed</text>
+  <text x="832" y="541" text-anchor="middle" fill="#14532d" font-size="7">PaymentRefunded</text>
+  <text x="832" y="552" text-anchor="middle" fill="#14532d" font-size="7">PaymentCaptured</text>
+  <text x="832" y="563" text-anchor="middle" fill="#ef4444" font-size="7">→ via Outbox</text>
+
+  <!-- Infrastructure -->
+  <rect x="579" y="582" width="342" height="80" rx="5" fill="#040f08" stroke="#14532d" stroke-width="1"/>
+  <text x="750" y="597" text-anchor="middle" fill="#22c55e" font-size="8" letter-spacing="2">INFRASTRUCTURE LAYER</text>
+  <rect x="589" y="602" width="100" height="50" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="639" y="616" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">PaymentRepository</text>
+  <text x="639" y="627" text-anchor="middle" fill="#14532d" font-size="7">TypeORM impl</text>
+  <text x="639" y="638" text-anchor="middle" fill="#14532d" font-size="7">Ledger entries</text>
+  <text x="639" y="649" text-anchor="middle" fill="#14532d" font-size="7">Audit trail</text>
+  <rect x="699" y="602" width="100" height="50" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="749" y="616" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="bold">OutboxWorker</text>
+  <text x="749" y="627" text-anchor="middle" fill="#14532d" font-size="7">Poll 500ms</text>
+  <text x="749" y="638" text-anchor="middle" fill="#14532d" font-size="7">FOR UPDATE</text>
+  <text x="749" y="649" text-anchor="middle" fill="#14532d" font-size="7">SKIP LOCKED</text>
+  <rect x="809" y="602" width="102" height="50" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="860" y="616" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">Stripe Adapter</text>
+  <text x="860" y="627" text-anchor="middle" fill="#14532d" font-size="7">stripe.charges</text>
+  <text x="860" y="638" text-anchor="middle" fill="#14532d" font-size="7">stripe.refunds</text>
+  <text x="860" y="649" text-anchor="middle" fill="#14532d" font-size="7">Webhook handler</text>
+
+  <rect x="589" y="670" width="155" height="18" rx="3" fill="#020a04" stroke="#14532d" stroke-width="1"/>
+  <text x="666" y="683" text-anchor="middle" fill="#14532d" font-size="8">🗄 PostgreSQL  (payments_db)</text>
+  <rect x="754" y="670" width="157" height="18" rx="3" fill="#020a04" stroke="#ef4444" stroke-width="1"/>
+  <text x="832" y="683" text-anchor="middle" fill="#7f1d1d" font-size="8">📤 outbox_events table</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- NOTIFICATION SERVICE -->
+  <!-- ══════════════════════════════════════════════ -->
+  <rect x="1064" y="242" width="374" height="430" rx="8" fill="#0a0415" stroke="#a855f7" stroke-width="2"/>
+  <rect x="1064" y="242" width="374" height="32" rx="8" fill="url(#headerNotif)"/>
+  <rect x="1064" y="260" width="374" height="14" fill="url(#headerNotif)"/>
+  <text x="1251" y="263" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="bold" letter-spacing="2">NOTIFICATION SERVICE</text>
+
+  <!-- API -->
+  <rect x="1080" y="280" width="342" height="82" rx="5" fill="#0a0415" stroke="#581c87" stroke-width="1"/>
+  <text x="1251" y="296" text-anchor="middle" fill="#a855f7" font-size="8" letter-spacing="2">API LAYER</text>
+  <rect x="1090" y="301" width="150" height="50" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1165" y="316" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">NotifController</text>
+  <text x="1165" y="329" text-anchor="middle" fill="#3b0764" font-size="7">GET /notifications</text>
+  <text x="1165" y="340" text-anchor="middle" fill="#3b0764" font-size="7">POST /notifications</text>
+  <text x="1165" y="351" text-anchor="middle" fill="#3b0764" font-size="7">GET /templates</text>
+  <rect x="1250" y="301" width="162" height="50" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1331" y="316" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">DTOs + Validators</text>
+  <text x="1331" y="329" text-anchor="middle" fill="#3b0764" font-size="7">SendNotificationDto</text>
+  <text x="1331" y="340" text-anchor="middle" fill="#3b0764" font-size="7">NotificationStatus</text>
+  <text x="1331" y="351" text-anchor="middle" fill="#3b0764" font-size="7">TemplateDto</text>
+
+  <!-- Application -->
+  <rect x="1080" y="372" width="342" height="90" rx="5" fill="#0a0415" stroke="#581c87" stroke-width="1"/>
+  <text x="1251" y="388" text-anchor="middle" fill="#a855f7" font-size="8" letter-spacing="2">APPLICATION LAYER</text>
+  <rect x="1090" y="393" width="100" height="60" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1140" y="407" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">COMMANDS</text>
+  <text x="1140" y="419" text-anchor="middle" fill="#3b0764" font-size="7">SendEmailCmd</text>
+  <text x="1140" y="430" text-anchor="middle" fill="#3b0764" font-size="7">SendSMSCmd</text>
+  <text x="1140" y="441" text-anchor="middle" fill="#3b0764" font-size="7">SendPushCmd</text>
+  <text x="1140" y="452" text-anchor="middle" fill="#3b0764" font-size="7">BulkNotifyCmd</text>
+  <rect x="1200" y="393" width="100" height="60" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1250" y="407" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">QUERIES</text>
+  <text x="1250" y="419" text-anchor="middle" fill="#3b0764" font-size="7">GetById</text>
+  <text x="1250" y="430" text-anchor="middle" fill="#3b0764" font-size="7">GetByUser</text>
+  <text x="1250" y="441" text-anchor="middle" fill="#3b0764" font-size="7">DeliveryStatus</text>
+  <text x="1250" y="452" text-anchor="middle" fill="#3b0764" font-size="7">ClickThrough</text>
+  <rect x="1310" y="393" width="102" height="60" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1361" y="407" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">EVT HANDLERS</text>
+  <text x="1361" y="419" text-anchor="middle" fill="#3b0764" font-size="7">OrderConfirmed</text>
+  <text x="1361" y="430" text-anchor="middle" fill="#3b0764" font-size="7">→ email receipt</text>
+  <text x="1361" y="441" text-anchor="middle" fill="#3b0764" font-size="7">OrderCancelled</text>
+  <text x="1361" y="452" text-anchor="middle" fill="#3b0764" font-size="7">→ sms alert</text>
+
+  <!-- Domain -->
+  <rect x="1080" y="472" width="342" height="100" rx="5" fill="#05010a" stroke="#581c87" stroke-width="1.5"/>
+  <text x="1251" y="488" text-anchor="middle" fill="#a855f7" font-size="8" letter-spacing="2">DOMAIN LAYER  ⚡ PURE — NO FRAMEWORK</text>
+  <rect x="1090" y="493" width="155" height="68" rx="3" fill="#030007" stroke="#3b0764" stroke-width="1"/>
+  <text x="1167" y="507" text-anchor="middle" fill="#a855f7" font-size="8" font-weight="bold">Notification Entity</text>
+  <text x="1167" y="519" text-anchor="middle" fill="#3b0764" font-size="7">NotificationId  (VO)</text>
+  <text x="1167" y="530" text-anchor="middle" fill="#3b0764" font-size="7">Channel (email/sms/push)</text>
+  <text x="1167" y="541" text-anchor="middle" fill="#3b0764" font-size="7">Status (pending/sent/fail)</text>
+  <text x="1167" y="552" text-anchor="middle" fill="#3b0764" font-size="7">Template (VO)</text>
+  <text x="1167" y="563" text-anchor="middle" fill="#3b0764" font-size="7">RecipientId  (VO)</text>
+  <rect x="1255" y="493" width="157" height="68" rx="3" fill="#030007" stroke="#3b0764" stroke-width="1"/>
+  <text x="1333" y="507" text-anchor="middle" fill="#a855f7" font-size="8" font-weight="bold">Domain Events</text>
+  <text x="1333" y="519" text-anchor="middle" fill="#3b0764" font-size="7">NotificationSent</text>
+  <text x="1333" y="530" text-anchor="middle" fill="#3b0764" font-size="7">NotificationFailed</text>
+  <text x="1333" y="541" text-anchor="middle" fill="#3b0764" font-size="7">NotificationQueued</text>
+  <text x="1333" y="552" text-anchor="middle" fill="#3b0764" font-size="7">LinkClicked</text>
+  <text x="1333" y="563" text-anchor="middle" fill="#ef4444" font-size="7">→ via Outbox</text>
+
+  <!-- Infrastructure -->
+  <rect x="1080" y="582" width="342" height="80" rx="5" fill="#0a0415" stroke="#581c87" stroke-width="1"/>
+  <text x="1251" y="597" text-anchor="middle" fill="#a855f7" font-size="8" letter-spacing="2">INFRASTRUCTURE LAYER</text>
+  <rect x="1090" y="602" width="100" height="50" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1140" y="616" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">SendGrid Adapter</text>
+  <text x="1140" y="627" text-anchor="middle" fill="#3b0764" font-size="7">Email templates</text>
+  <text x="1140" y="638" text-anchor="middle" fill="#3b0764" font-size="7">Bounce handling</text>
+  <text x="1140" y="649" text-anchor="middle" fill="#3b0764" font-size="7">Open tracking</text>
+  <rect x="1200" y="602" width="100" height="50" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1250" y="616" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">Twilio Adapter</text>
+  <text x="1250" y="627" text-anchor="middle" fill="#3b0764" font-size="7">SMS delivery</text>
+  <text x="1250" y="638" text-anchor="middle" fill="#3b0764" font-size="7">Status webhook</text>
+  <text x="1250" y="649" text-anchor="middle" fill="#3b0764" font-size="7">Multi-region</text>
+  <rect x="1310" y="602" width="102" height="50" rx="3" fill="#05010a" stroke="#3b0764" stroke-width="1"/>
+  <text x="1361" y="616" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="bold">OutboxWorker</text>
+  <text x="1361" y="627" text-anchor="middle" fill="#3b0764" font-size="7">Poll 500ms</text>
+  <text x="1361" y="638" text-anchor="middle" fill="#3b0764" font-size="7">FOR UPDATE</text>
+  <text x="1361" y="649" text-anchor="middle" fill="#3b0764" font-size="7">SKIP LOCKED</text>
+
+  <rect x="1090" y="670" width="155" height="18" rx="3" fill="#05010a" stroke="#581c87" stroke-width="1"/>
+  <text x="1167" y="683" text-anchor="middle" fill="#3b0764" font-size="8">🗄 PostgreSQL  (notif_db)</text>
+  <rect x="1255" y="670" width="157" height="18" rx="3" fill="#05010a" stroke="#ef4444" stroke-width="1"/>
+  <text x="1333" y="683" text-anchor="middle" fill="#7f1d1d" font-size="8">📤 outbox_events table</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SHARED KERNEL + KAFKA -->
+  <!-- ══════════════════════════════════════════════ -->
+
+  <!-- Shared contracts box -->
+  <rect x="62" y="700" width="374" height="52" rx="5" fill="#0a1020" stroke="#475569" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="249" y="720" text-anchor="middle" fill="#64748b" font-size="9" font-weight="bold" letter-spacing="2">SHARED KERNEL  (npm package)</text>
+  <text x="249" y="736" text-anchor="middle" fill="#334155" font-size="8">AggregateRoot  ·  DomainEvent  ·  ValueObject</text>
+  <text x="249" y="748" text-anchor="middle" fill="#334155" font-size="8">OrderCreatedEvent  ·  PaymentProcessedEvent  (contracts)</text>
+
+  <!-- OUTBOX PATTERN explanation -->
+  <rect x="563" y="700" width="374" height="52" rx="5" fill="#0a0500" stroke="#f97316" stroke-width="1.5"/>
+  <text x="750" y="718" text-anchor="middle" fill="#f97316" font-size="9" font-weight="bold" letter-spacing="2">TRANSACTIONAL OUTBOX PATTERN</text>
+  <text x="750" y="733" text-anchor="middle" fill="#78350f" font-size="8">1. Save aggregate + events in ONE transaction</text>
+  <text x="750" y="746" text-anchor="middle" fill="#78350f" font-size="8">2. OutboxWorker polls → publishes to Kafka → marks published</text>
+
+  <!-- K8s note -->
+  <rect x="1064" y="700" width="374" height="52" rx="5" fill="#030a14" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="1251" y="720" text-anchor="middle" fill="#0369a1" font-size="9" font-weight="bold" letter-spacing="2">KUBERNETES DEPLOYMENT</text>
+  <text x="1251" y="736" text-anchor="middle" fill="#0c4a6e" font-size="8">HPA (min:2 max:10)  ·  Resource limits  ·  Readiness probes</text>
+  <text x="1251" y="748" text-anchor="middle" fill="#0c4a6e" font-size="8">Secrets via Vault  ·  ConfigMaps  ·  Network Policies</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- KAFKA BAR -->
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- Arrows: outbox workers → kafka -->
+  <line x1="248" y1="688" x2="248" y2="768" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#ao)"/>
+  <line x1="749" y1="688" x2="749" y2="768" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#ao)"/>
+  <line x1="1361" y1="688" x2="1361" y2="768" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#ao)"/>
+
+  <rect x="62" y="768" width="1376" height="105" rx="8" fill="url(#kafkaGrad)" stroke="#7c3aed" stroke-width="2" filter="url(#glow)"/>
+  <text x="750" y="792" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="bold" letter-spacing="4">APACHE KAFKA  —  EVENT BUS</text>
+  <text x="750" y="808" text-anchor="middle" fill="#3730a3" font-size="8" letter-spacing="3">3 BROKERS  ·  REPLICATION FACTOR 3  ·  AT-LEAST-ONCE DELIVERY  ·  CONSUMER GROUPS</text>
+
+  <!-- Kafka topics -->
+  <rect x="78" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#6d28d9" stroke-width="1"/>
+  <text x="160" y="829" text-anchor="middle" fill="#7c3aed" font-size="7" letter-spacing="1">TOPIC</text>
+  <text x="160" y="841" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">order.created</text>
+  <text x="160" y="853" text-anchor="middle" fill="#3730a3" font-size="7">→ Payment, Inventory</text>
+
+  <rect x="258" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#6d28d9" stroke-width="1"/>
+  <text x="340" y="829" text-anchor="middle" fill="#7c3aed" font-size="7" letter-spacing="1">TOPIC</text>
+  <text x="340" y="841" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">order.confirmed</text>
+  <text x="340" y="853" text-anchor="middle" fill="#3730a3" font-size="7">→ Notification</text>
+
+  <rect x="438" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#6d28d9" stroke-width="1"/>
+  <text x="520" y="829" text-anchor="middle" fill="#7c3aed" font-size="7" letter-spacing="1">TOPIC</text>
+  <text x="520" y="841" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">order.cancelled</text>
+  <text x="520" y="853" text-anchor="middle" fill="#3730a3" font-size="7">→ Payment (refund)</text>
+
+  <rect x="618" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#6d28d9" stroke-width="1"/>
+  <text x="700" y="829" text-anchor="middle" fill="#7c3aed" font-size="7" letter-spacing="1">TOPIC</text>
+  <text x="700" y="841" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">payment.processed</text>
+  <text x="700" y="853" text-anchor="middle" fill="#3730a3" font-size="7">→ Order (confirm)</text>
+
+  <rect x="798" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#6d28d9" stroke-width="1"/>
+  <text x="880" y="829" text-anchor="middle" fill="#7c3aed" font-size="7" letter-spacing="1">TOPIC</text>
+  <text x="880" y="841" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">payment.failed</text>
+  <text x="880" y="853" text-anchor="middle" fill="#3730a3" font-size="7">→ Order (cancel)</text>
+
+  <rect x="978" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#6d28d9" stroke-width="1"/>
+  <text x="1060" y="829" text-anchor="middle" fill="#7c3aed" font-size="7" letter-spacing="1">TOPIC</text>
+  <text x="1060" y="841" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">notification.sent</text>
+  <text x="1060" y="853" text-anchor="middle" fill="#3730a3" font-size="7">→ Analytics</text>
+
+  <rect x="1158" y="815" width="165" height="46" rx="3" fill="#0d0820" stroke="#ef4444" stroke-width="1"/>
+  <text x="1240" y="829" text-anchor="middle" fill="#dc2626" font-size="7" letter-spacing="1">DLQ</text>
+  <text x="1240" y="841" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="bold">dead-letter</text>
+  <text x="1240" y="853" text-anchor="middle" fill="#7f1d1d" font-size="7">Failed after retries</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- FOOTER LEGEND -->
+  <!-- ══════════════════════════════════════════════ -->
+  <line x1="62" y1="888" x2="1438" y2="888" stroke="#0f1f35" stroke-width="1"/>
+
+  <rect x="62" y="896" width="10" height="10" rx="1" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="78" y="906" fill="#3b82f6" font-size="8">Order Service</text>
+  <rect x="172" y="896" width="10" height="10" rx="1" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="188" y="906" fill="#22c55e" font-size="8">Payment Service</text>
+  <rect x="302" y="896" width="10" height="10" rx="1" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="318" y="906" fill="#a855f7" font-size="8">Notification Service</text>
+  <rect x="452" y="896" width="10" height="10" rx="1" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="468" y="906" fill="#f97316" font-size="8">Outbox → Kafka (guaranteed delivery)</text>
+  <rect x="672" y="896" width="10" height="10" rx="1" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="688" y="906" fill="#ef4444" font-size="8">Dead Letter Queue</text>
+
+  <text x="1438" y="906" text-anchor="end" fill="#1e3a5f" font-size="8">github.com/yourname/microservices-ddd-kafka</text>
+</svg>
