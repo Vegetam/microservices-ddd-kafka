@@ -21,4 +21,7 @@ export class OrderResponseDto {
 
   @ApiProperty()
   createdAt!: string;
+
+   @ApiProperty() 
+   updatedAt!: string;
 }
